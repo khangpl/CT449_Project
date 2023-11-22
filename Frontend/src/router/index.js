@@ -1,0 +1,75 @@
+import { createWebHistory, createRouter } from "vue-router";
+import Home from '../views/Home.vue'
+
+const routes = [
+    //Login
+    {
+        path: "/",
+        name: "login",
+        component: () => import('../components/Login.vue'),
+    },
+    //Register
+    {
+        path: "/register",
+        name: "register",
+        component: () => import('../components/Register.vue'),
+    },
+    //Admin
+    {
+        path: "/admin",
+        name: "admin",
+        component: () => import('../views/AdminManager.vue'),
+    },
+    //Home
+    {
+        path: "/home",
+        name: "home",
+        component: Home,
+    },
+    //Quản lý sản phẩm
+    {
+        path: "/product",
+        name: "product.list",
+        component: () => import('../views/products/ProductList.vue'),
+    },
+    {
+        path: "/product/create",
+        name: "product.create",
+        component: () => import('../views/products/ProductForm.vue'),
+    },
+    {
+        path: "/product/edit/:id",
+        name: "product.edit",
+        component: () => import('../views/products/ProductForm.vue'),
+    },
+    //Quản lý tài khoản
+    {
+        path: "/user",
+        name: "user.list",
+        component: () => import('../views/users/UserList.vue'),
+    },
+    {
+        path: "/:pathMatch(.*)*", //regular expression
+        name: "error",
+        component: () => import('../views/Error.vue'),
+    },
+    //Liên hệ
+    {
+        path: "/contact",
+        name: "contact",
+        component: () => import('../components/Contact.vue'),
+    },
+    
+    //Giỏ hàng
+    {
+        path: "/cart",
+        name: "cart",
+        component: () => import('../components/Cart.vue'),
+    },
+];
+
+const router = createRouter({
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes,
+});
+export default router;
